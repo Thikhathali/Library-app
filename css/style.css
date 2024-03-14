@@ -1,0 +1,220 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'monospace';
+  background-color: #f1f1f1;  
+}
+
+.header{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  width: 100vw;
+  height: 60px;
+  padding: 0 10px;
+  background-color: palevioletred;
+  color: #fff;
+  box-shadow: 0 5px 16px 8px rgba(0, 0, 0, 0.2);
+}
+.header span {
+  text-align: center;
+}
+
+.wrapper{
+  display: grid;
+  row-gap: 30px;
+  justify-content: center;
+  margin-top: 70px;
+  z-index: -1;
+}
+
+.card{
+  width: 300px;
+  height: 200px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.status{
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  border: 1px solid #000;
+  border-radius: 50%;
+}
+
+.card-body {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: inherit;
+  height: 125px;  
+  background-color: #fff;
+  margin: 40px 0 0 0;
+  /* border: 1px solid #000; */
+}
+
+.pro-pic {
+  width: 30vw;
+  height: inherit;
+  text-align: center;
+  border: 1px solid #f2f2f2;
+  box-shadow: 0 5px 16px 8px rgba(0, 0, 0, 0.2);
+  align-items: center
+}
+
+.contents{
+  margin-left: 10px;
+}
+
+.contents > p{
+  font-family: 'monospace';
+  color: #777;
+  font-weight: 900;
+}
+
+.btnRemove {
+  position: relative;
+  width: inherit;
+  height: 30px;;
+  text-align: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 0 0 10px 10px;
+  margin-top: 5px;
+}
+
+button.btn-add{
+  width: 50px;
+  height: 50px;
+  font-size: 3em;
+  color: #fff;
+  /* background-color: #777; */
+  border-radius: 50%;
+  border: none;
+  margin-top: 60px;
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  z-index: 4;
+  text-align: center;
+  width: 80%;
+  height: 100vh;
+  padding: 20px;
+  border: none;
+}
+
+.d-header{
+  text-align: center;
+}
+
+.close-modal{
+  float: right;
+  font-size: 2em;
+  font-weight: 900;
+  color: darkred;
+  margin-top: -90px;
+  cursor: pointer;
+}
+
+.d-header, 
+.d-body{
+  margin: 50px auto;
+}
+.btn-add-book{
+  text-align: center;
+  width: 60%;
+  height: 50px;
+  font-size: 1em;
+  font-weight: 700;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  background-color: limegreen;
+  box-shadow: 0 5px 8px 5px rgba(0, 200, 0, .2);
+}
+
+input{
+  width: 100%;
+  height: 30px;
+  font-size: 1em;
+  font-style: italic;
+  letter-spacing: 5px;
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #888;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+}
+
+input:focus-visible{
+  outline: none;
+}
+
+#read-pages{
+  width: 50%;
+  margin-left: -10px;
+}
+
+button.minus-pages,
+button.add-pages{
+  width: 40px;
+  height: 40px;
+  font-size: 1.5em;
+  font-weight: 900;
+  color: #fff;
+  border-radius: 50%;
+  border: none;
+}
+
+dialog[open]{
+    -webkit-animation: show .5s ease normal;
+}
+
+dialog[close]{
+  -webkit-animation: hide .5s ease normal;
+}
+
+@-webkit-keyframes show{
+  from{
+    transform: translateX(-110%);
+  }
+  to{
+    transform: translateX(0);
+  }
+}
+
+@-webkit-keyframes hide{
+  to{
+    transform: translateX(-110%);
+  }
+}
+
+input.error-msg{
+  border-bottom: 1px solid red;
+}
+
+input.error-read-pages{
+  content: "must be less than pages..";
+  border-bottom: 1px solid red;
+}
+
+
+@media screen and (min-width: 1020px) {
+  .wrapper{
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    padding-left: 20px;
+  }
+} 
