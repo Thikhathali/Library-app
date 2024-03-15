@@ -24,9 +24,54 @@ const addBooks = (e) => {
         elInput[3].value,
         )
       );
+    renderBook();
+    readStatus(library);
     elInput.forEach((input) => input.value = "");
     elCloseBtn.click();
     log(library);
+}
+
+const renderBook = () => {
+  const elWrapper = document.querySelector(".wrapper");
+  elWrapper.innerHTML = library.map((book, i) => `<div class="card" id="${i}">
+          <div class="status">
+          </div>
+          <div class="card-body">
+          <div class="pro-pic">p.p</div>
+            <div class="contents">
+              <h3> ${book.title} </h3>
+              <p>  ${book.author} </p>
+              <button class="minus-pages"> - </button>
+              <em> ${book.pagesRead} /
+                 ${book.pages} </em>
+              <button class="add-pages"> + </button>
+            </div>
+          </div>
+          <div class="btnRemove">r e m o v e 
+          </div>
+        </div>
+    `
+    ).join(' ')
+}
+
+const readStatus = (array) => {
+  const elStatus = document.querySelectorAll(".status");
+  const elStats = document.querySelector(".header").lastChild.previousSibling;
+  
+  let completedTot =  0;
+  
+  array.map((book, i) => {
+    if(book.pages == book.pagesRead){
+      elStatus[i].style.backgroundColor = "greenyellow";
+      completedTot++;
+    }  
+    else if ((book.pages * 0.5) > book.pagesRead){
+      elStatus[i].style.backgroundColor = "indianred";
+    } 
+    else if((book.pages * 0.5) <= book.pagesRead) {
+      elStatus[i].style.backgroundColor = "orange";
+    }
+  });
 }
 
 
