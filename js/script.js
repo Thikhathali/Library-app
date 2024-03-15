@@ -15,6 +15,32 @@ function Book(author, title, pages, pagesRead){
   this.pagesRead = pagesRead;
 }
 
+const validateFields = () => {
+  let hasData = null;
+
+  if(elInput[0].value == "" || elInput[1].value == "" || elInput[2].value == "" 
+  || elInput[3].value == "") {
+    elInput.forEach((input) => {
+      if(input.value == ""){
+        input.classList.add("error-msg");
+      }else {
+        input.classList.remove("error-msg");
+      }
+    });
+    hasData = false;
+  }
+  else if(Number.parseInt(elInput[2].value) < Number.parseInt(elInput[3].value)) {
+    console.log('pages read must be less than the pages!');
+    elInput[3].classList.add("error-read-pages");
+    hasData = false;
+  }
+  else {
+    elInput.forEach(input => input.classList.remove("error-read-pages"));
+    hasData = true;
+  }
+  return hasData;
+}
+
 const addBooks = (e) => {
     library.push(
       new Book(
