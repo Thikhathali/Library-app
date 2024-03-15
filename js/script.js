@@ -72,6 +72,15 @@ const readStatus = (array) => {
       elStatus[i].style.backgroundColor = "orange";
     }
   });
+  // Update books completed 
+  (array.length <= 0) ? elStats :
+  elStats.innerHTML = '<span>completed</span>' + '<br>' + completedTot  + '/' + array.length;
+  
+  const allReadPages = array.map(read => read.pagesRead);
+  
+  const sumReadPages = allReadPages.reduce((prev, curr) => prev + curr);
+  
+  // console.log(allReadPages.join(' ') + '\n' + sumReadPages);
 }
 
 
