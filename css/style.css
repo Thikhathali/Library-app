@@ -89,6 +89,7 @@ body {
   background-color: #fff;
   border-radius: 0 0 10px 10px;
   margin-top: 5px;
+  cursor: pointer;
 }
 
 button.btn-add{
@@ -142,6 +143,7 @@ button.btn-add{
   color: #fff;
   background-color: limegreen;
   box-shadow: 0 5px 8px 5px rgba(0, 200, 0, .2);
+  cursor: pointer;
 }
 
 input{
