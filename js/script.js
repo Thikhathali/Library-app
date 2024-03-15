@@ -15,6 +15,16 @@ function Book(author, title, pages, pagesRead){
   this.pagesRead = pagesRead;
 }
 
+Book.prototype.addPagesRead = function() { 
+  if(this.pagesRead == this.pages) return;
+  return ++this.pagesRead;
+}
+
+Book.prototype.subtractPagesRead = function() { 
+  if(this.pagesRead <= 0) return;
+  return --this.pagesRead;
+}
+
 const validateFields = () => {
   let hasData = null;
 
@@ -138,4 +148,14 @@ elCloseBtn.addEventListener("click", () => {
 elAddBook.addEventListener("click", addBooks);
 
 elWrapper.addEventListener("click", removeBook, { capture: true });
+
+elWrapper.addEventListener('click', (e) => {
+  let card = e.target;
+  let cardAtIndex = card.parentNode.parentNode.parentNode.id;
+  
+  (card.className !== 'add-pages') ?
+    log(library.at(Number.parseInt(cardAtIndex)).subtractPagesRead()) : 
+    log(library.at(Number.parseInt(cardAtIndex)).addPagesRead());
+
+}, { capture : true });
 
