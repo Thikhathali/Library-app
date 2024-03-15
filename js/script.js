@@ -42,19 +42,23 @@ const validateFields = () => {
 }
 
 const addBooks = (e) => {
-    library.push(
-      new Book(
-        elInput[0].value,
-        elInput[1].value,
-        elInput[2].value,
-        elInput[3].value,
-        )
-      );
-    renderBook();
-    readStatus(library);
-    elInput.forEach((input) => input.value = "");
-    elCloseBtn.click();
-    log(library);
+    if(validateFields()){
+      library.push(
+        new Book(
+          elInput[0].value,
+          elInput[1].value,
+          elInput[2].value,
+          elInput[3].value,
+          )
+        );
+      renderBook();
+      readStatus(library);
+      elInput.forEach((input) => input.value = "");
+      elCloseBtn.click();
+      log(library);
+    } else {
+      return;
+    }
 }
 
 const renderBook = () => {
