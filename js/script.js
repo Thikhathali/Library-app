@@ -83,10 +83,17 @@ const readStatus = (array) => {
   // console.log(allReadPages.join(' ') + '\n' + sumReadPages);
 }
 
+const removeBook = (e) => {
+  if(e.target.className !== 'btnRemove') return;
+  
+  const card = e.target.parentNode;
+  library.splice(card.id, 1);
+  elWrapper.removeChild(card);
+  console.log(library);
+}
 
 elAddBtn.addEventListener("click", () => {
   elDialog.show();
-  if(library.length > 0) log(library[0].constructor === Book);
 });
 
 elCloseBtn.addEventListener("click", () => {
@@ -99,4 +106,6 @@ elCloseBtn.addEventListener("click", () => {
 });
 
 elAddBook.addEventListener("click", addBooks);
+
+elWrapper.addEventListener("click", removeBook, { capture: true });
 
